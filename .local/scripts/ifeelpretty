@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Toggle transparency and gaps
+{ pidof xcompmgr && \
+    {
+        killall xcompmgr
+        i3-msg 'gaps inner all set 0, gaps outer all set 0'
+    }
+} || \
+{
+    xcompmgr &
+    i3-msg 'gaps inner all set 14; gaps outer all minus 2'
+}

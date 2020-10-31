@@ -1,0 +1,40 @@
+" Run :options in vim to see available configuration options
+" These can also be found at /usr/share/vim/vim81/doc/options.txt
+
+set nocompatible
+
+" Allow intelligent auto-indenting for each filetype, and for plugins that are filetype specific
+filetype indent plugin on
+
+syntax on
+
+set mouse=a
+
+set encoding=utf-8
+
+set number relativenumber
+
+" Automatically deletes trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" Preserve indentation in wrapped text
+set breakindent
+
+" Highlight searches
+set hlsearch
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+
+" Use four spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+

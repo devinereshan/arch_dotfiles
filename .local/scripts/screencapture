@@ -1,0 +1,33 @@
+#! /usr/bin/env bash
+# Usage: screencapture outputfile
+# Expects Focusrite audio interface to exist
+
+mic=$(pacmd list-sources | grep -o alsa_input.usb-Focusrite_Scarlett_2i4_USB-00.analog-stereo)
+monitor=$(pacmd list-sources | grep -o alsa_output.usb-Focusrite_Scarlett_2i4_USB-00.analog-surround-40.monitor)
+
+if [ -z "${mic}" ]
+then
+    echo "ERROR: Unable to locate microphone input"
+    echo "Exiting..."
+    exit 1
+fi
+
+if [ -z "${monitor}" ]
+then
+    echo "ERROR: Unable to locate audio interface"
+    echo "Exiting..."
+    exit 1
+fi
+
+if [ $1 ]
+then
+    ffmpeg -thread_queue_size 256 -f x11grab -video_size 1920x1080 -framerate 30 -i $DISPLAY \
+    -thread_queue_size 256 -f pulse -ac 2 -ar 44100 -i "${monitor}" \
+    -thread_queue_size 256 -f pulse -ac 1 -ar 44100 -i "${mic}" \
+    -filter_complex amix=inputs=2 \
+    -c:v libx264 -preset superfast \
+    -c:a aac ${1}
+else
+    echo "ERROR: Must specify output file"
+    echo "e.g. 'screencapture screen.mp4'"
+fi
