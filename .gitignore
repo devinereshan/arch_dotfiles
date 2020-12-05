@@ -10,3 +10,4 @@ xorg/
 .mozilla/
 .config/chromium/
 .pki/
+.local/src/
