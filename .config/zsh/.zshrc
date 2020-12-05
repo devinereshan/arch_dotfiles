@@ -1,8 +1,13 @@
-# Luke's config for the Zoomer Shell
-
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+if [ xset q >/dev/null 2>&1 ]
+then
+    # Prompt for X session
+    PS1="%B%F{36}%n%f%F{201}@%f%F{36}%M %f%F{45}%~%f%F{201} $%f%b "
+else
+    # Prompt for tty
+    PS1="%B%F{2}%n%f%F{5}@%f%F{2}%M %f%F{6}%~%f%F{5} $%f%b "
+fi
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
@@ -71,6 +76,13 @@ bindkey '^[[P' delete-char
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+alias p="sudo pacman"
+alias lsblk="lsblk -f"
+alias mu="udiskctl mount -b"
+alias um="udiskctl unmount -b"
+alias ls="ls -F --group-directories-first --color=auto"
+alias ll="ls -al"
 
 # Load syntax highlighting; should be last.
 # source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

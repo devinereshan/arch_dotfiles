@@ -1,7 +1,5 @@
 #!/bin/sh
 
-export STATUSBAR="i3blocks"
-
 . ~/.xprofile
 
 exec i3

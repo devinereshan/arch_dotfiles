@@ -5,7 +5,7 @@
 import -window root /tmp/screenshot.png
 
 # blur it
-convert /tmp/screenshot.png +level 0%,10%,1.50 -blur 0x10 -colorize '#888888' /tmp/screenshotblur.png
+convert /tmp/screenshot.png +level 0%,20%,1.50 -blur 0x10 /tmp/screenshotblur.png
 rm /tmp/screenshot.png
 
 # lock the screen

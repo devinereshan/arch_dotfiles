@@ -44,10 +44,5 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AURDIR="$HOME/.local/src/aur"
 
 
-alias p="sudo pacman"
-alias lsblk="lsblk -f"
-alias mu="udiskctl mount -b"
-alias um="udiskctl unmount -b"
-
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/keymaps/personal.map 2>/dev/null

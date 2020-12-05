@@ -6,8 +6,8 @@
         killall xcompmgr
         i3-msg 'gaps inner all set 0, gaps outer all set 0'
     }
-} || \
+} 2>&1 >/dev/null || \
 {
     xcompmgr &
     i3-msg 'gaps inner all set 14; gaps outer all minus 2'
-}
+} 2>&1 >/dev/null
