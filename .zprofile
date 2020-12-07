@@ -5,7 +5,7 @@
 # If you don't plan on reverting to bash, you can remove the link in ~/.profile
 # to clean up.
 
-# Adds `~/.local/bin` to $PATH
+# Adds `~/.local/scripts` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/scripts" | cut -f2 | paste -sd ':')"
 
 # Default programs:
