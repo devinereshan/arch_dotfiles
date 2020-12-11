@@ -1,12 +1,12 @@
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-if [ xset q >/dev/null 2>&1 ]
+if [ ! xset q >/dev/null 2>&1 ]
 then
     # Prompt for X session
-    PS1="%B%F{36}%n%f%F{201}@%f%F{36}%M %f%F{45}%~%f%F{201} $%f%b "
+    PS1="%B%F{36}%n%f%F{201}@%f%F{36}%M %f%F{45}%1~%f%F{201} $%f%b "
 else
     # Prompt for tty
-    PS1="%B%F{2}%n%f%F{5}@%f%F{2}%M %f%F{6}%~%f%F{5} $%f%b "
+    PS1="%B%F{2}%n%f%F{5}@%f%F{2}%M %f%F{6}%1~%f%F{5} $%f%b "
 fi
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
